@@ -1610,6 +1610,7 @@ defmodule Decimal do
 
   defp decimal(%Decimal{} = num), do: num
   defp decimal(num) when is_integer(num), do: new(num)
+  defp decimal(num) when is_float(num), do: new(num)
   defp decimal(num) when is_binary(num), do: new(num)
 
   defp decimal(other) do
