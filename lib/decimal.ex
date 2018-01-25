@@ -273,6 +273,10 @@ defmodule Decimal do
 
   def add(%Decimal{}, %Decimal{coef: :qNaN} = num2), do: num2
 
+  def add(%Decimal{coef: 0}, %Decimal{} = num2), do: num2
+
+  def add(%Decimal{} = num1, %Decimal{coef: 0}), do: num1
+
   def add(%Decimal{coef: :inf, sign: sign} = num1, %Decimal{coef: :inf, sign: sign} = num2) do
     if num1.exp > num2.exp do
       num1
